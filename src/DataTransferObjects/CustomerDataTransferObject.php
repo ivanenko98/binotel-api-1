@@ -9,8 +9,8 @@ final class CustomerDataTransferObject extends BinotelDataTransferObject
     public int $id;
     public string $name;
     public ?string $description = null;
-    public string $email;
-    public ?CustomerEmployeeDataTransferObject $assignedToEmployee = null;
+    public ?string $email = null;
+    public ?EmployeeDataTransferObject $assignedToEmployee = null;
     public array $numbers = [];
     public Collection $labels;
 
@@ -22,7 +22,7 @@ final class CustomerDataTransferObject extends BinotelDataTransferObject
             'description' => $array['description'],
             'email' => $array['email'],
             'assignedToEmployee' => !is_null($array['assignedToEmployee'])
-                ? CustomerEmployeeDataTransferObject::fromArray($array['assignedToEmployee'])
+                ? EmployeeDataTransferObject::fromArray($array['assignedToEmployee'])
                 : null,
             'numbers' => $array['numbers'],
             'labels' => LabelDataTransferObject::collectFromArray($array['labels'])

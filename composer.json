@@ -21,7 +21,8 @@
         "illuminate/http": "^7.0|^8.0",
         "illuminate/contracts": "^7.0|^8.0",
         "spatie/laravel-package-tools": "^1.6",
-        "spatie/data-transfer-object": "^2.5"
+        "spatie/data-transfer-object": "^2.5",
+        "spatie/enum": "^3.7"
     },
     "require-dev": {
         "brianium/paratest": "^6.2",

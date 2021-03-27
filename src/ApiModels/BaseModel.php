@@ -12,7 +12,7 @@ abstract class BaseModel
     protected bool $canBeCached = false;
     protected int $cacheSeconds = -1;
     protected string $model;
-    protected array $params = [];
+    private array $params = [];
     private ?string $method = null;
 
     /**
