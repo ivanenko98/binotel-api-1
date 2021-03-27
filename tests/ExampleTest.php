@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Skeleton\Tests;
+namespace Sashalenz\Binotel\Tests;
 
 class ExampleTest extends TestCase
 {

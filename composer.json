@@ -1,23 +1,27 @@
 {
-    "name": ":vendor_name/:package_name",
-    "description": ":package_description",
+    "name": "sashalenz/binotel-api",
+    "description": "API for Binotel",
     "keywords": [
-        ":vendor_name",
-        ":package_name"
+        "sashalenz",
+        "binotel-api"
     ],
-    "homepage": "https://github.com/:vendor_name/:package_name",
+    "homepage": "https://github.com/sashalenz/binotel-api",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
+            "name": "Oleksandr Petrovskyi",
+            "email": "sashalenz@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.0",
-        "spatie/laravel-package-tools": "^1.4.3",
-        "illuminate/contracts": "^8.0"
+        "illuminate/config": "^7.0|^8.0",
+        "illuminate/support": "^7.0|^8.0",
+        "illuminate/http": "^7.0|^8.0",
+        "illuminate/contracts": "^7.0|^8.0",
+        "spatie/laravel-package-tools": "^1.6",
+        "spatie/data-transfer-object": "^2.5"
     },
     "require-dev": {
         "brianium/paratest": "^6.2",
@@ -29,13 +33,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src",
-            "Spatie\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Sashalenz\\Binotel\\": "src",
+            "Sashalenz\\Binotel\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "Sashalenz\\Binotel\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -49,10 +53,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
+                "Sashalenz\\Binotel\\BinotelServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
+                "Binotel": "Sashalenz\\Binotel\\BinotelFacade"
             }
         }
     },
