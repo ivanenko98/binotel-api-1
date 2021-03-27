@@ -2,9 +2,9 @@
 
 namespace Sashalenz\Binotel\DataTransferObjects;
 
-use Sashalenz\Binotel\Enums\DispositionEnum;
+use Illuminate\Support\Collection;
 
-class StatDataTransferObject extends BinotelDataTransferObject
+final class StatDataTransferObject extends BinotelDataTransferObject
 {
     public int $companyID;
     public int $generalCallID;
@@ -15,15 +15,15 @@ class StatDataTransferObject extends BinotelDataTransferObject
     public string $externalNumber;
     public int $waitsec;
     public int $billsec;
-    public DispositionEnum $disposition;
+    public string $disposition;
     public bool $isNewCall;
-    public array $customerData;
-    public array $employeeData;
-    public array $pbxNumberData;
-    public array $historyData;
-    public array $callTrackingData; //todo
-    public array $getCallData; //todo
-    public string $smsContent;
+    public ?array $customerData = null;
+    public ?EmployeeDataTransferObject $employeeData = null;
+    public PbxNumberDataTransferObject $pbxNumberData;
+    public Collection $historyData;
+    public ?CallTrackingDataTransferObject $callTrackingData = null;
+    public ?GetCallDataTransferObject $getCallData = null;
+    public ?string $smsContent = null;
 
     public static function fromArray(array $array): self
     {
@@ -32,32 +32,30 @@ class StatDataTransferObject extends BinotelDataTransferObject
             'generalCallID' => (int) $array['generalCallID'],
             'startTime' => (int) $array['startTime'],
             'callType' => (int) $array['callType'],
-            'internalNumber' => (int) $array['internalNumber'],
+            'internalNumber' => !is_null($array['internalNumber'])
+                ? (int) $array['internalNumber']
+                : null,
             'internalAdditionalData' => $array['internalAdditionalData'],
             'externalNumber' => $array['externalNumber'],
             'waitsec' => (int) $array['waitsec'],
             'billsec' => (int) $array['billsec'],
             'disposition' => $array['disposition'],
             'isNewCall' => (bool) $array['isNewCall'],
-            'customerData' => isset($array['customerData'])
-                ? CustomerDataTransferObject::fromArray($array['customerData'])
+            'customerData' => is_array($array['customerData'])
+                ? $array['customerData']
                 : null,
-            'employeeData' => isset($array['employeeData'])
+            'employeeData' => !empty($array['employeeData'])
                 ? EmployeeDataTransferObject::fromArray($array['employeeData'])
                 : null,
-            'pbxNumberData' => isset($array['pbxNumberData'])
-                ? PbxNumberDataTransferObject::fromArray($array['pbxNumberData'])
-                : null,
-            'historyData' => isset($array['historyData'])
-                ? HistoryDataTransferObject::fromArray($array['historyData'])
-                : null,
+            'pbxNumberData' => PbxNumberDataTransferObject::fromArray($array['pbxNumberData']),
+            'historyData' => HistoryDataTransferObject::collectFromArray($array['historyData']),
             'callTrackingData' => isset($array['callTrackingData'])
                 ? CallTrackingDataTransferObject::fromArray($array['callTrackingData'])
                 : null,
             'getCallData' => isset($array['getCallData'])
-                ? CallTrackingDataTransferObject::fromArray($array['getCallData'])
+                ?  CallTrackingDataTransferObject::fromArray($array['getCallData'])
                 : null,
-            'smsContent' => $array['smsContent']
+            'smsContent' => $array['smsContent'] ?? null
         ]);
     }
 }

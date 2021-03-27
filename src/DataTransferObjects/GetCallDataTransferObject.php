@@ -4,7 +4,7 @@ namespace Sashalenz\Binotel\DataTransferObjects;
 
 use Carbon\Carbon;
 
-class GetCallDataTransferObject extends BinotelDataTransferObject
+final class GetCallDataTransferObject extends BinotelDataTransferObject
 {
     public int $id;
     public string $gaClientId;

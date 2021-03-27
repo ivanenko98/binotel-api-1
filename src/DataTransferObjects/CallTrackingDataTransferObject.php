@@ -2,7 +2,7 @@
 
 namespace Sashalenz\Binotel\DataTransferObjects;
 
-class CallTrackingDataTransferObject extends BinotelDataTransferObject
+final class CallTrackingDataTransferObject extends BinotelDataTransferObject
 {
     public int $id;
     public string $gaClientId;

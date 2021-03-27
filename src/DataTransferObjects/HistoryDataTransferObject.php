@@ -2,23 +2,21 @@
 
 namespace Sashalenz\Binotel\DataTransferObjects;
 
-use Sashalenz\Binotel\Enums\DispositionEnum;
-
-class HistoryDataTransferObject extends BinotelDataTransferObject
+final class HistoryDataTransferObject extends BinotelDataTransferObject
 {
-    public int $internalNumber;
-    public string $internalAdditionalData;
-    public array $employeeData;
+    public ?string $internalNumber = null;
+    public ?string $internalAdditionalData = null;
+    public ?EmployeeDataTransferObject $employeeData = null;
     public int $waitsec;
     public int $billsec;
-    public DispositionEnum $disposition;
+    public string $disposition;
 
     public static function fromArray(array $array): self
     {
         return new self([
-            'internalNumber' => (int) $array['internalNumber'],
-            'internalAdditionalData' => $array['internalAdditionalData'],
-            'employeeData' => isset($array['employeeData'])
+            'internalNumber' => $array['internalNumber'] ?? null,
+            'internalAdditionalData' => $array['internalAdditionalData'] ?? null,
+            'employeeData' => !empty($array['employeeData'])
                 ? EmployeeDataTransferObject::fromArray($array['employeeData'])
                 : null,
             'waitsec' => (int) $array['waitsec'],

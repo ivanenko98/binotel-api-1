@@ -39,8 +39,7 @@ return [
 ## Usage
 
 ```php
-$binotel = new Sashalenz\Binotel();
-echo $binotel->getCalls();
+$customersList = Sashalenz\Binotel\Binotel::customers()->list();
 ```
 
 ## Testing

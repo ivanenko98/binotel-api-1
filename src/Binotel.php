@@ -3,6 +3,7 @@
 namespace Sashalenz\Binotel;
 
 use Sashalenz\Binotel\ApiModels\Customers;
+use Sashalenz\Binotel\ApiModels\Settings;
 use Sashalenz\Binotel\ApiModels\Stats;
 
 final class Binotel
@@ -15,5 +16,10 @@ final class Binotel
     public static function stats(): Stats
     {
         return new Stats();
+    }
+
+    public static function settings(): Settings
+    {
+        return new Settings();
     }
 }
