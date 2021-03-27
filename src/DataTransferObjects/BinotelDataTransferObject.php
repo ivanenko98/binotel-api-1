@@ -9,11 +9,12 @@ abstract class BinotelDataTransferObject extends FlexibleDataTransferObject
 {
     abstract public static function fromArray(array $array);
 
-    public static function collectFromArray(array $array) : Collection
+    public static function collectFromArray(?array $array = []) : Collection
     {
         return collect($array)
             ->map(
                 fn (array $parameters) => static::fromArray($parameters)
-            );
+            )
+            ->values();
     }
 }

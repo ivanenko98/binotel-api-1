@@ -4,6 +4,7 @@ namespace Sashalenz\Binotel\ApiModels;
 
 use Illuminate\Support\Collection;
 use Sashalenz\Binotel\DataTransferObjects\CustomerDataTransferObject;
+use Sashalenz\Binotel\DataTransferObjects\LabelDataTransferObject;
 use Sashalenz\Binotel\Exceptions\BinotelException;
 
 final class Customers extends BaseModel
@@ -17,8 +18,24 @@ final class Customers extends BaseModel
     public function list(): Collection
     {
         return CustomerDataTransferObject::collectFromArray(
-            $this
-                ->method('list')
+            $this->method('list')
+                ->request()
+                ->get('customerData')
+        );
+    }
+
+    /**
+     * @param int|array $id
+     * @return Collection
+     * @throws BinotelException
+     */
+    public function takeById(int|array $id): Collection
+    {
+        return CustomerDataTransferObject::collectFromArray(
+            $this->method('take-by-id')
+                ->params([
+                    'customerID' => $id
+                ])
                 ->request()
                 ->get('customerData')
         );
@@ -26,19 +43,102 @@ final class Customers extends BaseModel
 
     /**
      * @param int $id
-     * @return CustomerDataTransferObject
+     * @return Collection
      * @throws BinotelException
      */
-    public function takeById(int $id): CustomerDataTransferObject
+    public function takeByLabel(int $id): Collection
     {
-        return CustomerDataTransferObject::fromArray(
-            $this
-                ->method('take-by-id')
+        return CustomerDataTransferObject::collectFromArray(
+            $this->method('take-by-label')
                 ->params([
-                    'customerID' => $id
+                    'labelID' => $id
                 ])
                 ->request()
                 ->get('customerData')
         );
+    }
+
+    /**
+     * @param string $subject
+     * @return Collection
+     * @throws BinotelException
+     */
+    public function search(string $subject): Collection
+    {
+        return CustomerDataTransferObject::collectFromArray(
+            $this->method('search')
+                ->params([
+                    'subject' => $subject
+                ])
+                ->request()
+                ->get('customerData')
+        );
+    }
+
+    /**
+     * @param array $params
+     * @return int
+     * @throws BinotelException
+     */
+    public function create(array $params): int
+    {
+        return (int) $this->method('create')
+            ->params($params)
+            ->validate($this->validationRules())
+            ->request()
+            ->get('customerID');
+    }
+
+    /**
+     * @param array $params
+     * @throws BinotelException
+     */
+    public function update(array $params): void
+    {
+        $this->method('update')
+            ->params($params)
+            ->validate($this->validationRules())
+            ->request();
+    }
+
+    /**
+     * @param int $id
+     * @throws BinotelException
+     */
+    public function delete(int $id): void
+    {
+        $this->method('delete')
+            ->params([
+                'customerID' => $id
+            ])
+            ->request();
+    }
+
+    /**
+     * @return Collection
+     * @throws BinotelException
+     */
+    public function listOfLabels(): Collection
+    {
+        return LabelDataTransferObject::collectFromArray(
+            $this
+                ->method('listOfLabels')
+                ->request()
+                ->get('listOfLabels')
+        );
+    }
+
+    private function validationRules(): array
+    {
+        return [
+            'name' => ['required', 'string'],
+            'numbers.*' => ['required', 'string', 'size:10'],
+            'description' => ['nullable', 'string'],
+            'email' => ['nullable', 'email'],
+            'assignedToEmployee.internalNumber' => ['nullable', 'numeric'],
+            'assignedToEmployee.id' => ['nullable', 'numeric'],
+            'labels.id' => ['nullable', 'numeric'],
+            'labels.name' => ['nullable', 'string']
+        ];
     }
 }

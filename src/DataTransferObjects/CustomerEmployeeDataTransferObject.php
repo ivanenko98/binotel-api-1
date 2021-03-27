@@ -12,9 +12,9 @@ final class CustomerEmployeeDataTransferObject extends BinotelDataTransferObject
     public static function fromArray(array $array): self
     {
         return new self([
-            'id' => $array['id'],
+            'id' => (int) $array['id'],
             'name' => $array['name'],
-            'internalNumber' => $array['internalNumber'],
+            'internalNumber' => (int) $array['internalNumber'],
             'email' => $array['email']
         ]);
     }

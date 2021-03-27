@@ -17,7 +17,7 @@ final class CustomerDataTransferObject extends BinotelDataTransferObject
     public static function fromArray(array $array): self
     {
         return new self([
-            'id' => $array['id'],
+            'id' => (int) $array['id'],
             'name' => $array['name'],
             'description' => $array['description'],
             'email' => $array['email'],

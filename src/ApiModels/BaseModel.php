@@ -43,9 +43,10 @@ abstract class BaseModel
 
     /**
      * @param array $rules
+     * @return $this
      * @throws BinotelException
      */
-    protected function validate(array $rules = []): void
+    protected function validate(array $rules = []): self
     {
         $validator = Validator::make(
             $this->params,
@@ -55,6 +56,8 @@ abstract class BaseModel
         if ($validator->fails()) {
             throw new BinotelException($validator->errors()->first());
         }
+
+        return $this;
     }
 
     /**
