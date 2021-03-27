@@ -37,7 +37,7 @@ final class Settings extends BaseModel
             ->request()
             ->get('listOfRoutes');
 
-        return collect($data)->mapWithKeys(fn ($key, $array) => [
+        return collect($data)->mapWithKeys(fn ($array, $key) => [
             $key => SettingsRoutesDataTransferObject::collectFromArray($array)
         ]);
     }
@@ -49,7 +49,7 @@ final class Settings extends BaseModel
     public function listOfVoiceFiles(): Collection
     {
         return SettingsVoiceFilesDataTransferObject::collectFromArray(
-            $this->method('list-of-employees')
+            $this->method('list-of-voice-files')
                 ->cache(5)
                 ->request()
                 ->get('listOfEmployees')
