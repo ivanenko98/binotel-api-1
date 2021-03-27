@@ -2,7 +2,6 @@
 
 namespace Sashalenz\Binotel\ApiModels;
 
-use Closure;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
 use Sashalenz\Binotel\Exceptions\BinotelException;
@@ -12,6 +11,8 @@ abstract class BaseModel
 {
     protected bool $canBeCached = false;
     protected int $cacheSeconds = -1;
+    protected string $model;
+    protected array $params = [];
     private ?string $method = null;
 
     /**
@@ -26,51 +27,28 @@ abstract class BaseModel
         return $this;
     }
 
-    /**
-     * @param $method
-     * @return $this
-     */
-    protected function method($method) : self
+    protected function method(string $method) : self
     {
-        $this->method = $method;
+        $this->method = $this->model . '/' . $method;
 
         return $this;
     }
 
-    public function when(bool $condition, Closure $callback, ?Closure $closure = null) : self
+    protected function params(array $params): self
     {
-        if ($condition) {
-            return $callback($this) ?: $this;
-        }
-
-        if (!is_null($closure)) {
-            return $closure($this) ?: $this;
-        }
+        $this->params = $params;
 
         return $this;
-    }
-
-    /**
-     * @return Collection
-     */
-    protected function getParams() : Collection
-    {
-        $properties = array_diff_key(
-            get_object_vars($this),
-            get_class_vars(get_parent_class($this))
-        );
-
-        return collect($properties);
     }
 
     /**
      * @param array $rules
      * @throws BinotelException
      */
-    protected function validate($rules = []): void
+    protected function validate(array $rules = []): void
     {
         $validator = Validator::make(
-            $this->getParams()->toArray(),
+            $this->params,
             $rules
         );
 
@@ -89,7 +67,7 @@ abstract class BaseModel
             throw new BinotelException('Provide method first');
         }
 
-        $request = new Request($this->method, $this->getParams());
+        $request = new Request($this->method, $this->params);
 
         if ($this->canBeCached) {
             return $request->cache($this->cacheSeconds);

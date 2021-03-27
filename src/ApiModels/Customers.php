@@ -8,7 +8,7 @@ use Sashalenz\Binotel\Exceptions\BinotelException;
 
 final class Customers extends BaseModel
 {
-    private const MODEL = 'customers';
+    protected string $model = 'customers';
 
     /**
      * @return Collection
@@ -16,10 +16,29 @@ final class Customers extends BaseModel
      */
     public function list(): Collection
     {
-        $response = $this->method(self::MODEL .'/list')->request();
+        return CustomerDataTransferObject::collectFromArray(
+            $this
+                ->method('list')
+                ->request()
+                ->get('customerData')
+        );
+    }
 
-        info($response);
-
-        return CustomerDataTransferObject::collectFromArray($response->toArray());
+    /**
+     * @param int $id
+     * @return CustomerDataTransferObject
+     * @throws BinotelException
+     */
+    public function takeById(int $id): CustomerDataTransferObject
+    {
+        return CustomerDataTransferObject::fromArray(
+            $this
+                ->method('take-by-id')
+                ->params([
+                    'customerID' => $id
+                ])
+                ->request()
+                ->get('customerData')
+        );
     }
 }

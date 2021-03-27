@@ -21,9 +21,9 @@ final class Request
     private string $format = 'json';
     private string $url = 'https://api.binotel.com/api/';
     private string $method;
-    private Collection $params;
+    private array $params;
 
-    public function __construct(string $method, Collection $params)
+    public function __construct(string $method, array $params)
     {
         $this->method = $method;
         $this->params = $params;
@@ -40,8 +40,9 @@ final class Request
      */
     public function make(): Collection
     {
-        $this->params->put('key', $this->key);
-        $this->params->put('secret', $this->secret);
+        $this->params['key'] = $this->key;
+        $this->params['secret'] = $this->secret;
+
         $link = $this->url . $this->version .'/'. $this->method .'.'. $this->format;
 
         try {
@@ -53,7 +54,7 @@ final class Request
                 ->asJson()
                 ->post(
                     $link,
-                    $this->params->toArray()
+                    $this->params
                 )
                 ->throw()
                 ->collect();
@@ -73,6 +74,6 @@ final class Request
 
     private function getCacheKey() : string
     {
-        return $this->method.'_'.$this->params->values()->implode('_');
+        return $this->method.'_'.collect($this->params)->values()->implode('_');
     }
 }
