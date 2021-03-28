@@ -4,7 +4,7 @@ namespace Sashalenz\Binotel\ApiModels;
 
 use Sashalenz\Binotel\Exceptions\BinotelException;
 
-class Calls extends BaseModel
+final class Calls extends BaseModel
 {
     protected string $model = 'calls';
 

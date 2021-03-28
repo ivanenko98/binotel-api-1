@@ -3,7 +3,8 @@
     "description": "API for Binotel",
     "keywords": [
         "sashalenz",
-        "binotel-api"
+        "binotel-api",
+        "binotel"
     ],
     "homepage": "https://github.com/sashalenz/binotel-api",
     "license": "MIT",
@@ -34,8 +35,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Sashalenz\\Binotel\\": "src",
-            "Sashalenz\\Binotel\\Database\\Factories\\": "database/factories"
+            "Sashalenz\\Binotel\\": "src"
         }
     },
     "autoload-dev": {

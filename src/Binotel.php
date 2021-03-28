@@ -2,6 +2,7 @@
 
 namespace Sashalenz\Binotel;
 
+use Sashalenz\Binotel\ApiModels\Calls;
 use Sashalenz\Binotel\ApiModels\Customers;
 use Sashalenz\Binotel\ApiModels\Settings;
 use Sashalenz\Binotel\ApiModels\Stats;
@@ -21,5 +22,10 @@ final class Binotel
     public static function settings(): Settings
     {
         return new Settings();
+    }
+
+    public static function calls(): Calls
+    {
+        return new Calls();
     }
 }

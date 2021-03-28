@@ -11,6 +11,7 @@ class BinotelServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('binotel-api')
+            ->hasRoute('web')
             ->hasConfigFile()
             ->hasMigration('create_binotel_api_table');
     }
