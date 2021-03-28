@@ -26,7 +26,7 @@ class DispositionEnum extends Enum
 {
     protected static function values(): Closure
     {
-        return static function(string $name): string {
+        return static function (string $name): string {
             return str_replace('-', '_', $name);
         };
     }

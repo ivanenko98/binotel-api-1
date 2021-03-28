@@ -20,12 +20,12 @@ final class Calls extends BaseModel
             ->validate([
                 'internalNumber' => ['required', 'numeric'],
                 'externalNumber' => ['required', 'string', 'size:10'],
-                'pbxNumber'	=> ['nullable', 'string', 'size:10'],
-                'limitCallTime'	=> ['nullable', 'numeric', 'min:0'],
-                'callTimeToExt'	=> ['nullable', 'numeric', 'min:0'],
+                'pbxNumber' => ['nullable', 'string', 'size:10'],
+                'limitCallTime' => ['nullable', 'numeric', 'min:0'],
+                'callTimeToExt' => ['nullable', 'numeric', 'min:0'],
                 'playbackWaiting' => ['nullable', 'in:TRUE,FALSE'],
                 'callerIdForEmployee' => ['nullable', 'string'],
-                'async' => ['nullable', 'in:TRUE,FALSE']
+                'async' => ['nullable', 'in:TRUE,FALSE'],
             ])
             ->request()
             ->get('generalCallID');
@@ -43,9 +43,9 @@ final class Calls extends BaseModel
             ->validate([
                 'externalNumber1' => ['required', 'string', 'size:10'],
                 'externalNumber2' => ['required', 'string', 'size:10'],
-                'pbxNumber'	=> ['required', 'string', 'size:10'],
-                'limitCallTime'	=> ['nullable', 'numeric', 'min:0'],
-                'playbackWaiting' => ['nullable', 'in:TRUE,FALSE']
+                'pbxNumber' => ['required', 'string', 'size:10'],
+                'limitCallTime' => ['nullable', 'numeric', 'min:0'],
+                'playbackWaiting' => ['nullable', 'in:TRUE,FALSE'],
             ])
             ->request()
             ->get('generalCallID');
@@ -62,8 +62,8 @@ final class Calls extends BaseModel
             ->params($params)
             ->validate([
                 'externalNumber' => ['required', 'string', 'size:10'],
-                'pbxNumber'	=> ['required', 'string', 'size:10'],
-                'pbxNumberInExternalCall'	=> ['nullable', 'size:10']
+                'pbxNumber' => ['required', 'string', 'size:10'],
+                'pbxNumberInExternalCall' => ['nullable', 'size:10'],
             ])
             ->request()
             ->get('generalCallID');
@@ -80,11 +80,11 @@ final class Calls extends BaseModel
         $this->method('attended-call-transfer')
             ->params([
                 'generalCallID' => $generalCallID,
-                'externalNumber' => $externalNumber
+                'externalNumber' => $externalNumber,
             ])
             ->validate([
                 'generalCallID' => ['required', 'numeric'],
-                'externalNumber'	=> ['required', 'string', 'size:10']
+                'externalNumber' => ['required', 'string', 'size:10'],
             ])
             ->request();
     }
@@ -97,10 +97,10 @@ final class Calls extends BaseModel
     {
         $this->method('attended-call-transfer')
             ->params([
-                'generalCallID' => $generalCallID
+                'generalCallID' => $generalCallID,
             ])
             ->validate([
-                'generalCallID' => ['required', 'numeric']
+                'generalCallID' => ['required', 'numeric'],
             ])
             ->request();
     }
@@ -115,7 +115,7 @@ final class Calls extends BaseModel
             ->params($params)
             ->validate([
                 'externalNumber' => ['required', 'string', 'size:10'],
-                'voiceFileID' => ['required', 'numeric']
+                'voiceFileID' => ['required', 'numeric'],
             ])
             ->request();
     }
@@ -131,7 +131,7 @@ final class Calls extends BaseModel
             ->validate([
                 'externalNumber' => ['required', 'string', 'size:10'],
                 'ivrName' => ['required', 'string'],
-                'rewriteInternalNumber' => ['nullable']
+                'rewriteInternalNumber' => ['nullable'],
             ])
             ->request();
     }

@@ -17,7 +17,7 @@ class WebhookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'requestType' => ['required', 'in:apiCallSettings,apiCallCompleted']
+            'requestType' => ['required', 'in:apiCallSettings,apiCallCompleted'],
         ];
     }
 
@@ -49,7 +49,7 @@ class WebhookRequest extends FormRequest
             '194.88.218.120' => 'sip22.binotel.com',
             '185.100.66.145' => 'sip50.binotel.com',
             '185.100.66.146' => 'sip51.binotel.com',
-            '185.100.66.147' => 'sip52.binotel.com'
+            '185.100.66.147' => 'sip52.binotel.com',
         ];
     }
 }

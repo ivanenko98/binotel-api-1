@@ -17,7 +17,7 @@ final class SettingsEndpointDataTransferObject extends BinotelDataTransferObject
             'login' => $array['login'],
             'password' => $array['password'],
             'internalNumber' => $array['internalNumber'],
-            'status' => $array['status']
+            'status' => $array['status'],
         ]);
     }
 }

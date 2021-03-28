@@ -29,12 +29,12 @@ final class Customers extends BaseModel
      * @return Collection
      * @throws BinotelException
      */
-    public function takeById(int|array $id): Collection
+    public function takeById(int | array $id): Collection
     {
         return CustomerDataTransferObject::collectFromArray(
             $this->method('take-by-id')
                 ->params([
-                    'customerID' => $id
+                    'customerID' => $id,
                 ])
                 ->request()
                 ->get('customerData')
@@ -51,7 +51,7 @@ final class Customers extends BaseModel
         return CustomerDataTransferObject::collectFromArray(
             $this->method('take-by-label')
                 ->params([
-                    'labelID' => $id
+                    'labelID' => $id,
                 ])
                 ->request()
                 ->get('customerData')
@@ -68,7 +68,7 @@ final class Customers extends BaseModel
         return CustomerDataTransferObject::collectFromArray(
             $this->method('search')
                 ->params([
-                    'subject' => $subject
+                    'subject' => $subject,
                 ])
                 ->request()
                 ->get('customerData')
@@ -109,7 +109,7 @@ final class Customers extends BaseModel
     {
         $this->method('delete')
             ->params([
-                'customerID' => $id
+                'customerID' => $id,
             ])
             ->request();
     }
@@ -138,7 +138,7 @@ final class Customers extends BaseModel
             'assignedToEmployee.internalNumber' => ['nullable', 'numeric'],
             'assignedToEmployee.id' => ['nullable', 'numeric'],
             'labels.id' => ['nullable', 'numeric'],
-            'labels.name' => ['nullable', 'string']
+            'labels.name' => ['nullable', 'string'],
         ];
     }
 }

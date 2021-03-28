@@ -23,7 +23,7 @@ final class CustomerDataTransferObject extends BinotelDataTransferObject
             'email' => $array['email'],
             'assignedToEmployee' => EmployeeDataTransferObject::fromArray($array['assignedToEmployee']),
             'numbers' => $array['numbers'],
-            'labels' => LabelDataTransferObject::collectFromArray($array['labels'])
+            'labels' => LabelDataTransferObject::collectFromArray($array['labels']),
         ]);
     }
 }

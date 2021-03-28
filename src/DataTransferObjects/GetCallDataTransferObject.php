@@ -63,7 +63,7 @@ final class GetCallDataTransferObject extends BinotelDataTransferObject
             'attemptsCounter' => $array['attemptsCounter'],
             'employeesDontAnswerCounter' => $array['employeesDontAnswerCounter'],
             'fullUrl' => $array['fullUrl'],
-            'description' => $array['description']
+            'description' => $array['description'],
         ]);
     }
 }

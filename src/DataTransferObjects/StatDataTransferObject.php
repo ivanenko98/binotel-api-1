@@ -32,7 +32,7 @@ final class StatDataTransferObject extends BinotelDataTransferObject
             'generalCallID' => (int) $array['generalCallID'],
             'startTime' => (int) $array['startTime'],
             'callType' => (int) $array['callType'],
-            'internalNumber' => !is_null($array['internalNumber'])
+            'internalNumber' => ! is_null($array['internalNumber'])
                 ? (int) $array['internalNumber']
                 : null,
             'internalAdditionalData' => $array['internalAdditionalData'],
@@ -44,7 +44,7 @@ final class StatDataTransferObject extends BinotelDataTransferObject
             'customerData' => is_array($array['customerData'])
                 ? $array['customerData']
                 : null,
-            'employeeData' => !empty($array['employeeData'])
+            'employeeData' => ! empty($array['employeeData'])
                 ? EmployeeDataTransferObject::fromArray($array['employeeData'])
                 : null,
             'pbxNumberData' => PbxNumberDataTransferObject::fromArray($array['pbxNumberData']),
@@ -55,7 +55,7 @@ final class StatDataTransferObject extends BinotelDataTransferObject
             'getCallData' => isset($array['getCallData'])
                 ?  CallTrackingDataTransferObject::fromArray($array['getCallData'])
                 : null,
-            'smsContent' => $array['smsContent'] ?? null
+            'smsContent' => $array['smsContent'] ?? null,
         ]);
     }
 }

@@ -16,12 +16,12 @@ final class HistoryDataTransferObject extends BinotelDataTransferObject
         return new self([
             'internalNumber' => $array['internalNumber'] ?? null,
             'internalAdditionalData' => $array['internalAdditionalData'] ?? null,
-            'employeeData' => !empty($array['employeeData'])
+            'employeeData' => ! empty($array['employeeData'])
                 ? EmployeeDataTransferObject::fromArray($array['employeeData'])
                 : null,
             'waitsec' => (int) $array['waitsec'],
             'billsec' => (int) $array['billsec'],
-            'disposition' => $array['disposition']
+            'disposition' => $array['disposition'],
         ]);
     }
 }

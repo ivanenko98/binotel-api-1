@@ -11,7 +11,7 @@ final class PbxNumberDataTransferObject extends BinotelDataTransferObject
     {
         return new self([
             'name' => $array['name'] ?? null,
-            'number' => $array['number'] ?? null
+            'number' => $array['number'] ?? null,
         ]);
     }
 }
