@@ -38,7 +38,7 @@ final class Settings extends BaseModel
             ->get('listOfRoutes');
 
         return collect($data)->mapWithKeys(fn ($array, $key) => [
-            $key => SettingsRoutesDataTransferObject::collectFromArray($array)
+            $key => SettingsRoutesDataTransferObject::collectFromArray($array),
         ]);
     }
 

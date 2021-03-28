@@ -9,7 +9,7 @@ class WebhookController
 {
     public function __invoke(Request $request): JsonResponse
     {
-        if (!method_exists($this, $request->input('requestType'))) {
+        if (! method_exists($this, $request->input('requestType'))) {
             abort(404);
         }
 

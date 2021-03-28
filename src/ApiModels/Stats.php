@@ -22,7 +22,7 @@ final class Stats extends BaseModel
             $this->method('incoming-calls-for-period')
                 ->params([
                     'startTime' => $startTime,
-                    'stopTime' => $stopTime
+                    'stopTime' => $stopTime,
                 ])
                 ->request()
                 ->get('callDetails')
@@ -41,7 +41,7 @@ final class Stats extends BaseModel
             $this->method('outgoing-calls-for-period')
                 ->params([
                     'startTime' => $startTime,
-                    'stopTime' => $stopTime
+                    'stopTime' => $stopTime,
                 ])
                 ->request()
                 ->get('callDetails')
@@ -60,7 +60,7 @@ final class Stats extends BaseModel
             $this->method('calltracking-calls-for-period')
                 ->params([
                     'startTime' => $startTime,
-                    'stopTime' => $stopTime
+                    'stopTime' => $stopTime,
                 ])
                 ->request()
                 ->get('callDetails')
@@ -77,7 +77,7 @@ final class Stats extends BaseModel
         return StatDataTransferObject::collectFromArray(
             $this->method('all-incoming-calls-since')
                 ->params([
-                    'timestamp' => $timestamp
+                    'timestamp' => $timestamp,
                 ])
                 ->request()
                 ->get('callDetails')
@@ -94,7 +94,7 @@ final class Stats extends BaseModel
         return StatDataTransferObject::collectFromArray(
             $this->method('all-outgoing-calls-since')
                 ->params([
-                    'timestamp' => $timestamp
+                    'timestamp' => $timestamp,
                 ])
                 ->request()
                 ->get('callDetails')
@@ -115,7 +115,7 @@ final class Stats extends BaseModel
                 ->params([
                     'internalNumber' => $internalNumber,
                     'startTime' => $startTime,
-                    'stopTime' => $stopTime
+                    'stopTime' => $stopTime,
                 ])
                 ->request()
                 ->get('callDetails')
@@ -132,7 +132,7 @@ final class Stats extends BaseModel
         return StatDataTransferObject::collectFromArray(
             $this->method('list-of-calls-per-day')
                 ->params(array_filter([
-                    'dayInTimestamp' => $dayInTimestamp
+                    'dayInTimestamp' => $dayInTimestamp,
                 ]))
                 ->request()
                 ->get('callDetails')
@@ -151,7 +151,7 @@ final class Stats extends BaseModel
             $this->method('list-of-calls-for-period')
                 ->params([
                     'startTime' => $startTime,
-                    'stopTime' => $stopTime
+                    'stopTime' => $stopTime,
                 ])
                 ->request()
                 ->get('callDetails')
@@ -196,7 +196,7 @@ final class Stats extends BaseModel
         return StatDataTransferObject::collectFromArray(
             $this->method('history-by-external-number')
                 ->params([
-                    'externalNumbers' => $externalNumbers
+                    'externalNumbers' => $externalNumbers,
                 ])
                 ->cache(5)
                 ->request()
@@ -209,12 +209,12 @@ final class Stats extends BaseModel
      * @return Collection
      * @throws BinotelException
      */
-    public function historyByCustomerId(int|array $customerID): Collection
+    public function historyByCustomerId(int | array $customerID): Collection
     {
         return StatDataTransferObject::collectFromArray(
             $this->method('history-by-customer-id')
                 ->params([
-                    'customerID' => $customerID
+                    'customerID' => $customerID,
                 ])
                 ->cache(5)
                 ->request()
@@ -232,7 +232,7 @@ final class Stats extends BaseModel
         return StatDataTransferObject::collectFromArray(
             $this->method('recent-calls-by-internal-number')
                 ->params([
-                    'internalNumber' => $internalNumber
+                    'internalNumber' => $internalNumber,
                 ])
                 ->cache(5)
                 ->request()
@@ -250,7 +250,7 @@ final class Stats extends BaseModel
         return StatDataTransferObject::collectFromArray(
             $this->method('call-details')
                 ->params([
-                    'generalCallID' => $generalCallID
+                    'generalCallID' => $generalCallID,
                 ])
                 ->cache(10)
                 ->request()
@@ -267,7 +267,7 @@ final class Stats extends BaseModel
     {
         return $this->method('call-record')
             ->params([
-                'generalCallID' => $generalCallID
+                'generalCallID' => $generalCallID,
             ])
             ->cache(10)
             ->request()

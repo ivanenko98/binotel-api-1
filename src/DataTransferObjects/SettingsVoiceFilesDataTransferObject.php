@@ -13,7 +13,7 @@ final class SettingsVoiceFilesDataTransferObject extends BinotelDataTransferObje
         return new self([
             'id' => (int) $array['id'],
             'name' => $array['name'],
-            'type' => $array['type']
+            'type' => $array['type'],
         ]);
     }
 }

@@ -13,7 +13,7 @@ final class SettingsRoutesDataTransferObject extends BinotelDataTransferObject
         return new self([
             'id' => (int) $array['id'],
             'name' => $array['name'],
-            'description' => $array['description']
+            'description' => $array['description'],
         ]);
     }
 }

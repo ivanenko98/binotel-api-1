@@ -35,7 +35,7 @@ final class SettingsEmployeeDataTransferObject extends BinotelDataTransferObject
             'wireIsEnabled' => (bool) $array['wireIsEnabled'],
             'callCenterIsEnabled' => (bool) $array['callCenterIsEnabled'],
             'language' => $array['language'],
-            'endpointData' => SettingsEndpointDataTransferObject::fromArray($array['endpointData'])
+            'endpointData' => SettingsEndpointDataTransferObject::fromArray($array['endpointData']),
         ]);
     }
 }

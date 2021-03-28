@@ -39,7 +39,7 @@ final class CallTrackingDataTransferObject extends BinotelDataTransferObject
             'geoipOrg' => $array['geoipOrg'],
             'domain' => $array['domain'],
             'timeSpentOnSiteBeforeMakeCall' => $array['timeSpentOnSiteBeforeMakeCall'],
-            'firstVisitAt' => $array['firstVisitAt']
+            'firstVisitAt' => $array['firstVisitAt'],
         ]);
     }
 }

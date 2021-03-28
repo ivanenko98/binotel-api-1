@@ -17,7 +17,7 @@ final class EmployeeDataTransferObject extends BinotelDataTransferObject
                 : null,
             'name' => $array['name'] ?? null,
             'internalNumber' => $array['internalNumber'] ?? null,
-            'email' => $array['email'] ?? null
+            'email' => $array['email'] ?? null,
         ]);
     }
 }
