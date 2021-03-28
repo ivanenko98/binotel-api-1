@@ -12,7 +12,7 @@ class WebhookController
     {
         $actionClass = Config::get('binotel-api.actions.'.$request->input('requestType'));
 
-        if (!$actionClass || !method_exists($actionClass, 'handle')) {
+        if (! $actionClass || ! method_exists($actionClass, 'handle')) {
             abort(404);
         }
 
