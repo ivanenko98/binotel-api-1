@@ -72,7 +72,6 @@ final class Calls extends BaseModel
     /**
      * @param int $generalCallID
      * @param string $externalNumber
-     * @return int|null
      * @throws BinotelException
      */
     public function attendedCallTransfer(int $generalCallID, string $externalNumber): void

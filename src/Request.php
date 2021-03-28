@@ -17,9 +17,9 @@ final class Request
 
     private string $key;
     private string $secret;
-    private string $version = '4.0';
-    private string $format = 'json';
-    private string $url = 'https://api.binotel.com/api/';
+    private string $version;
+    private string $format;
+    private string $url;
     private string $method;
     private array $params;
 
@@ -30,8 +30,9 @@ final class Request
 
         $this->key = Config::get('binotel-api.key');
         $this->secret = Config::get('binotel-api.secret');
-        $this->version ??= Config::get('binotel-api.version');
-        $this->url ??= Config::get('binotel-api.url');
+        $this->version = Config::get('binotel-api.version');
+        $this->url = Config::get('binotel-api.url');
+        $this->format = Config::get('binotel-api.format');
     }
 
     /**

@@ -21,13 +21,11 @@ class WebhookController
 
     private function apiCallSettings(array $params): JsonResponse
     {
-        info(print_r($params, 1));
         return response()->json([]);
     }
 
     private function apiCallCompleted(array $params): JsonResponse
     {
-        info(print_r($params, 1));
         return response()->json([]);
     }
 }

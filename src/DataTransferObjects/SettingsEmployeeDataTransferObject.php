@@ -17,7 +17,7 @@ final class SettingsEmployeeDataTransferObject extends BinotelDataTransferObject
     public bool $chatIsEnabled;
     public bool $callCenterIsEnabled;
     public string $language;
-    public EndpointDataTransferObject $endpointData;
+    public SettingsVoiceFilesDataTransferObject $endpointData;
 
     public static function fromArray(array $array): self
     {
