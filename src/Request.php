@@ -60,7 +60,7 @@ final class Request
                 ->throw()
                 ->collect();
         } catch (RequestException $e) {
-            throw new BinotelException($e);
+            throw new BinotelException('API Exception: ' . $e->getMessage());
         }
     }
 

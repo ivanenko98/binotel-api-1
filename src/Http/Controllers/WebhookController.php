@@ -4,28 +4,21 @@ namespace Sashalenz\Binotel\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class WebhookController
 {
     public function __invoke(Request $request): JsonResponse
     {
-        if (! method_exists($this, $request->input('requestType'))) {
+        $actionClass = Config::get('binotel-api.actions.'.$request->input('requestType'));
+
+        if (!$actionClass || !method_exists($actionClass, 'handle')) {
             abort(404);
         }
 
-        return call_user_func(
-            $request->input('requestType'),
+        return call_user_func_array(
+            [$actionClass, 'handle'],
             $request->all()
         );
-    }
-
-    private function apiCallSettings(array $params): JsonResponse
-    {
-        return response()->json([]);
-    }
-
-    private function apiCallCompleted(array $params): JsonResponse
-    {
-        return response()->json([]);
     }
 }

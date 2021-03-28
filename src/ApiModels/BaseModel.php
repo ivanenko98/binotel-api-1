@@ -54,7 +54,7 @@ abstract class BaseModel
         );
 
         if ($validator->fails()) {
-            throw new BinotelException($validator->errors()->first());
+            throw new BinotelException('Validation exception ' . $validator->errors()->first());
         }
 
         return $this;
@@ -67,7 +67,7 @@ abstract class BaseModel
     public function request() : Collection
     {
         if (is_null($this->method)) {
-            throw new BinotelException('Provide method first');
+            throw new BinotelException('API Exception: Provide method first');
         }
 
         $request = new Request($this->method, $this->params);
