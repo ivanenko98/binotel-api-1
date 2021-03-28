@@ -36,6 +36,9 @@ final class Customers extends BaseModel
                 ->params([
                     'customerID' => $id,
                 ])
+                ->validate([
+                    'customerID' => ['required']
+                ])
                 ->request()
                 ->get('customerData')
         );
@@ -53,6 +56,9 @@ final class Customers extends BaseModel
                 ->params([
                     'labelID' => $id,
                 ])
+                ->validate([
+                    'labelID' => ['required', 'numeric']
+                ])
                 ->request()
                 ->get('customerData')
         );
@@ -69,6 +75,9 @@ final class Customers extends BaseModel
             $this->method('search')
                 ->params([
                     'subject' => $subject,
+                ])
+                ->validate([
+                    'subject' => ['required', 'string']
                 ])
                 ->request()
                 ->get('customerData')

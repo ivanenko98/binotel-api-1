@@ -19,10 +19,10 @@ final class CustomerDataTransferObject extends BinotelDataTransferObject
         return new self([
             'id' => (int) $array['id'],
             'name' => $array['name'],
-            'description' => $array['description'],
-            'email' => $array['email'],
+            'description' => $array['description'] ?? null,
+            'email' => $array['email'] ?? null,
             'assignedToEmployee' => EmployeeDataTransferObject::fromArray($array['assignedToEmployee']),
-            'numbers' => $array['numbers'],
+            'numbers' => $array['numbers'] ?? [],
             'labels' => LabelDataTransferObject::collectFromArray($array['labels']),
         ]);
     }

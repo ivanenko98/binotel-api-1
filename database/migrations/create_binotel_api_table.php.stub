@@ -10,7 +10,25 @@ class CreateBinotelApiTable extends Migration
     {
         Schema::create('binotel_calls', function (Blueprint $table) {
             $table->id();
+            $table->string('customer_type')->nullable();
+            $table->unsignedInteger('customer_id')->nullable();
+            $table->string('employee_type')->nullable();
+            $table->unsignedInteger('employee_id')->nullable();
+            $table->timestamp('start_time');
+            $table->integer('call_type')->default(0);
+            $table->integer('internal_number')->nullable()->index();
+            $table->string('internal_additional_data')->nullable();
+            $table->string('external_number')->nullable()->index();
+            $table->string('pbx_number')->nullable()->index();
+            $table->unsignedInteger('waitsec')->nullable();
+            $table->unsignedInteger('billsec')->nullable();
+            $table->string('disposition')->nullable()->index();
+            $table->boolean('is_new_call')->default(0);
             $table->nullableTimestamps();
+
+            $table->index(['customer_type', 'customer_id']);
+            $table->index(['employee_type', 'employee_id']);
         });
     }
+
 }
