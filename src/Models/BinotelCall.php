@@ -15,7 +15,7 @@ class BinotelCall extends Model
         'billsec' => 'integer',
         'start_time' => 'timestamp',
         'disposition' => DispositionEnum::class,
-        'is_new_call' => 'boolean'
+        'is_new_call' => 'boolean',
     ];
 
     public function customer(): MorphTo

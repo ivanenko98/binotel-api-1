@@ -37,7 +37,7 @@ final class Customers extends BaseModel
                     'customerID' => $id,
                 ])
                 ->validate([
-                    'customerID' => ['required']
+                    'customerID' => ['required'],
                 ])
                 ->request()
                 ->get('customerData')
@@ -57,7 +57,7 @@ final class Customers extends BaseModel
                     'labelID' => $id,
                 ])
                 ->validate([
-                    'labelID' => ['required', 'numeric']
+                    'labelID' => ['required', 'numeric'],
                 ])
                 ->request()
                 ->get('customerData')
@@ -77,7 +77,7 @@ final class Customers extends BaseModel
                     'subject' => $subject,
                 ])
                 ->validate([
-                    'subject' => ['required', 'string']
+                    'subject' => ['required', 'string'],
                 ])
                 ->request()
                 ->get('customerData')
