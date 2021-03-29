@@ -10,9 +10,9 @@ final class CustomerDataTransferObject extends BinotelDataTransferObject
     public string $name;
     public ?string $description = null;
     public ?string $email = null;
-    public EmployeeDataTransferObject $assignedToEmployee;
+    public ?EmployeeDataTransferObject $assignedToEmployee = null;
     public array $numbers = [];
-    public Collection $labels;
+    public ?Collection $labels = null;
 
     public static function fromArray(array $array): self
     {
@@ -21,9 +21,13 @@ final class CustomerDataTransferObject extends BinotelDataTransferObject
             'name' => $array['name'],
             'description' => $array['description'] ?? null,
             'email' => $array['email'] ?? null,
-            'assignedToEmployee' => EmployeeDataTransferObject::fromArray($array['assignedToEmployee']),
+            'assignedToEmployee' => isset($array['assignedToEmployee'])
+                ? EmployeeDataTransferObject::fromArray($array['assignedToEmployee'])
+                : null,
             'numbers' => $array['numbers'] ?? [],
-            'labels' => LabelDataTransferObject::collectFromArray($array['labels']),
+            'labels' => isset($array['labels'])
+                ? LabelDataTransferObject::collectFromArray($array['labels'])
+                : null,
         ]);
     }
 }

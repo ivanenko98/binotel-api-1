@@ -12,5 +12,7 @@ return [
     'actions' => [
         'apiCallSettings' => \Sashalenz\Binotel\Actions\ApiCallSettings::class,
         'apiCallCompleted' => \Sashalenz\Binotel\Actions\ApiCallCompleted::class
-    ]
+    ],
+
+    'domain' => env('BINOTEL_API_DOMAIN', env('APP_URL'))
 ];

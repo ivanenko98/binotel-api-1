@@ -23,7 +23,7 @@
         "illuminate/contracts": "^8.0",
         "spatie/laravel-package-tools": "^1.6",
         "spatie/data-transfer-object": "^2.5",
-        "spatie/enum": "^3.7"
+        "spatie/laravel-enum": "^2.4"
     },
     "require-dev": {
         "brianium/paratest": "^6.2",

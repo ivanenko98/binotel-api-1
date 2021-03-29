@@ -35,7 +35,7 @@ final class StatDataTransferObject extends BinotelDataTransferObject
             'callID' => (int) $array['callID'],
             'startTime' => (int) $array['startTime'],
             'callType' => (int) $array['callType'],
-            'internalNumber' => ! is_null($array['internalNumber'])
+            'internalNumber' => !empty($array['internalNumber'])
                 ? (int) $array['internalNumber']
                 : null,
             'internalAdditionalData' => $array['internalAdditionalData'] ?? null,
