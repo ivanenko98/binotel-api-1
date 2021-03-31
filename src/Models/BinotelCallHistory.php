@@ -15,7 +15,7 @@ class BinotelCallHistory extends Model
     protected $casts = [
         'waitsec' => 'integer',
         'billsec' => 'integer',
-        'disposition' => DispositionEnum::class
+        'disposition' => DispositionEnum::class,
     ];
 
     public function binotelCall(): BelongsTo
