@@ -16,9 +16,6 @@ class WebhookController
             abort(404);
         }
 
-        return call_user_func_array(
-            [$actionClass, 'handle'],
-            $request->all()
-        );
+        return app($actionClass)->handle($request->all());
     }
 }
