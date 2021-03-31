@@ -40,6 +40,16 @@ class BinotelCall extends Model
         return $this->belongsTo($model);
     }
 
+    public function pbx():? BelongsTo
+    {
+        $model = Config::get('binotel-api.pbx_class');
+        if (!is_null($model)) {
+            return null;
+        }
+
+        return $this->belongsTo($model);
+    }
+
     public function history(): HasMany
     {
         return $this->hasMany(BinotelCallHistory::class);

@@ -10,8 +10,9 @@ class CreateBinotelApiTable extends Migration
     {
         Schema::create('binotel_calls', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('customer_id')->nullable();
-            $table->unsignedInteger('employee_id')->nullable();
+            $table->unsignedInteger('customer_id')->nullable()->index();
+            $table->unsignedInteger('employee_id')->nullable()->index();
+            $table->unsignedInteger('pbx_id')->nullable()->index();
             $table->timestamp('start_time');
             $table->integer('call_type')->default(0);
             $table->integer('internal_number')->nullable()->index();
@@ -23,9 +24,6 @@ class CreateBinotelApiTable extends Migration
             $table->string('disposition')->nullable()->index();
             $table->boolean('is_new_call')->default(0);
             $table->nullableTimestamps();
-
-            $table->index(['customer_type', 'customer_id']);
-            $table->index(['employee_type', 'employee_id']);
         });
 
         Schema::create('binotel_call_history', function (Blueprint $table) {
@@ -36,7 +34,7 @@ class CreateBinotelApiTable extends Migration
                 ->onDelete('cascade');
             $table->integer('internal_number')->nullable()->index();
             $table->string('internal_additional_data')->nullable();
-            $table->unsignedInteger('employee_id')->nullable();
+            $table->unsignedInteger('employee_id')->nullable()->index();
             $table->unsignedInteger('waitsec')->nullable();
             $table->unsignedInteger('billsec')->nullable();
             $table->string('disposition')->nullable()->index();
