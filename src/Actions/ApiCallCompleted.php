@@ -3,10 +3,11 @@
 namespace Sashalenz\Binotel\Actions;
 
 use Illuminate\Http\JsonResponse;
+use Sashalenz\Binotel\DataTransferObjects\ApiCallSettingsDataTransferObject;
 
 class ApiCallCompleted implements ActionInterface
 {
-    public function handle(array $request): JsonResponse
+    public function handle(ApiCallSettingsDataTransferObject $call): JsonResponse
     {
         // TODO: Implement handle() method.
 
