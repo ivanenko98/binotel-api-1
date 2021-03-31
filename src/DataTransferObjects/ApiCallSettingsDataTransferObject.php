@@ -7,7 +7,7 @@ use Spatie\DataTransferObject\DataTransferObject;
 
 final class ApiCallSettingsDataTransferObject extends DataTransferObject
 {
-    public int $requestType;
+    public string $requestType;
     public ?string $pbxNumber = null;
     public ?int $internalNumber = null;
     public string $externalNumber;
@@ -17,7 +17,7 @@ final class ApiCallSettingsDataTransferObject extends DataTransferObject
     public static function fromRequest(Request $request): self
     {
         return new self([
-            'requestType' => (int) $request->input('requestType'),
+            'requestType' => $request->input('requestType'),
             'pbxNumber' => $request->input('pbxNumber'),
             'internalNumber' => !is_null($request->input('internalNumber'))
                 ? (int) $request->input('internalNumber')
