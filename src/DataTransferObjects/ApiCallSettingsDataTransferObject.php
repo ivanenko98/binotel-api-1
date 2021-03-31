@@ -19,12 +19,12 @@ final class ApiCallSettingsDataTransferObject extends DataTransferObject
         return new self([
             'requestType' => (int) $request->input('requestType'),
             'pbxNumber' => $request->input('pbxNumber'),
-            'internalNumber' => !is_null($request->input('internalNumber'))
+            'internalNumber' => ! is_null($request->input('internalNumber'))
                 ? (int) $request->input('internalNumber')
                 : null,
             'externalNumber' => $request->input('externalNumber'),
             'companyID' => (int) $request->input('companyID'),
-            'callType' => (int) $request->input('callType')
+            'callType' => (int) $request->input('callType'),
         ]);
     }
 }
