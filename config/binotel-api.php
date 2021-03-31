@@ -14,5 +14,8 @@ return [
         'apiCallCompleted' => \Sashalenz\Binotel\Actions\ApiCallCompleted::class
     ],
 
+    'customer_class' => null,
+    'employee_class' => null,
+
     'domain' => env('BINOTEL_API_DOMAIN', env('APP_URL'))
 ];

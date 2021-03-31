@@ -10,9 +10,7 @@ class CreateBinotelApiTable extends Migration
     {
         Schema::create('binotel_calls', function (Blueprint $table) {
             $table->id();
-            $table->string('customer_type')->nullable();
             $table->unsignedInteger('customer_id')->nullable();
-            $table->string('employee_type')->nullable();
             $table->unsignedInteger('employee_id')->nullable();
             $table->timestamp('start_time');
             $table->integer('call_type')->default(0);
@@ -29,6 +27,28 @@ class CreateBinotelApiTable extends Migration
             $table->index(['customer_type', 'customer_id']);
             $table->index(['employee_type', 'employee_id']);
         });
+
+        Schema::create('binotel_call_history', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('binotel_call_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->integer('internal_number')->nullable()->index();
+            $table->string('internal_additional_data')->nullable();
+            $table->unsignedInteger('employee_id')->nullable();
+            $table->unsignedInteger('waitsec')->nullable();
+            $table->unsignedInteger('billsec')->nullable();
+            $table->string('disposition')->nullable()->index();
+        });
     }
 
+    public function down()
+    {
+        Schema::table('binotel_call_history', function (Blueprint $table) {
+            $table->dropForeign(['binotel_call_id']);
+        });
+        Schema::dropIfExists('binotel_call_history');
+        Schema::dropIfExists('binotel_calls');
+    }
 }
