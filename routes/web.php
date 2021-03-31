@@ -7,5 +7,5 @@ use Sashalenz\Binotel\Http\Controllers\WebhookController;
 Route::prefix('binotel-api')
     ->domain(Config::get('binotel-api.domain'))
     ->as('binotel-api.')
-    ->get('webhook', WebhookController::class)
+    ->post('webhook', WebhookController::class)
     ->name('webhook');

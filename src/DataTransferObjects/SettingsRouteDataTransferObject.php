@@ -2,18 +2,18 @@
 
 namespace Sashalenz\Binotel\DataTransferObjects;
 
-final class SettingsVoiceFilesDataTransferObject extends BinotelDataTransferObject
+final class SettingsRouteDataTransferObject extends BinotelDataTransferObject
 {
     public int $id;
     public string $name;
-    public string $type;
+    public string $description;
 
     public static function fromArray(array $array): self
     {
         return new self([
             'id' => (int) $array['id'],
             'name' => $array['name'],
-            'type' => $array['type'],
+            'description' => $array['description'],
         ]);
     }
 }
