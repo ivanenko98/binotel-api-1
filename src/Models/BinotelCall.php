@@ -23,7 +23,7 @@ class BinotelCall extends Model
     public function customer():? BelongsTo
     {
         $model = Config::get('binotel-api.employee_class');
-        if (!is_null($model)) {
+        if (! is_null($model)) {
             return null;
         }
 
@@ -33,7 +33,7 @@ class BinotelCall extends Model
     public function employee():? BelongsTo
     {
         $model = Config::get('binotel-api.customer_class');
-        if (!is_null($model)) {
+        if (! is_null($model)) {
             return null;
         }
 
