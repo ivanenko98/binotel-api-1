@@ -43,7 +43,7 @@ class BinotelCall extends Model
     public function pbx():? BelongsTo
     {
         $model = Config::get('binotel-api.pbx_class');
-        if (!is_null($model)) {
+        if (! is_null($model)) {
             return null;
         }
 
