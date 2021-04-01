@@ -2,6 +2,7 @@
 
 namespace Sashalenz\Binotel\DataTransferObjects;
 
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
 final class StatDataTransferObject extends BinotelDataTransferObject
@@ -9,7 +10,7 @@ final class StatDataTransferObject extends BinotelDataTransferObject
     public int $companyID;
     public int $generalCallID;
     public int $callID;
-    public int $startTime;
+    public Carbon $startTime;
     public int $callType;
     public ?int $internalNumber = null;
     public ?string $internalAdditionalData = null;
@@ -33,7 +34,7 @@ final class StatDataTransferObject extends BinotelDataTransferObject
             'companyID' => (int) $array['companyID'],
             'generalCallID' => (int) $array['generalCallID'],
             'callID' => (int) $array['callID'],
-            'startTime' => (int) $array['startTime'],
+            'startTime' => Carbon::createFromTimestamp($array['startTime']),
             'callType' => (int) $array['callType'],
             'internalNumber' => ! empty($array['internalNumber'])
                 ? (int) $array['internalNumber']
