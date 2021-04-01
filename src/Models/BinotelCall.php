@@ -12,6 +12,10 @@ class BinotelCall extends Model
 {
     protected $guarded = [];
 
+    protected $dates = [
+        'start_time'
+    ];
+
     protected $casts = [
         'waitsec' => 'integer',
         'billsec' => 'integer',
