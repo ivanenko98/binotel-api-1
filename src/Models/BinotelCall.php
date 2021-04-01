@@ -13,7 +13,7 @@ class BinotelCall extends Model
     protected $guarded = [];
 
     protected $dates = [
-        'start_time'
+        'start_time',
     ];
 
     protected $casts = [
