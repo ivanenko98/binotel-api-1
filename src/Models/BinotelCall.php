@@ -19,39 +19,23 @@ class BinotelCall extends Model
     protected $casts = [
         'waitsec' => 'integer',
         'billsec' => 'integer',
-        'start_time' => 'timestamp',
         'disposition' => DispositionEnum::class,
         'is_new_call' => 'boolean',
     ];
 
-    public function customer():? BelongsTo
+    public function customer(): BelongsTo
     {
-        $model = Config::get('binotel-api.employee_class');
-        if (! is_null($model)) {
-            return null;
-        }
-
-        return $this->belongsTo($model);
+        return $this->belongsTo(Config::get('binotel-api.customer_class'));
     }
 
-    public function employee():? BelongsTo
+    public function employee(): BelongsTo
     {
-        $model = Config::get('binotel-api.customer_class');
-        if (! is_null($model)) {
-            return null;
-        }
-
-        return $this->belongsTo($model);
+        return $this->belongsTo(Config::get('binotel-api.employee_class'));
     }
 
-    public function pbx():? BelongsTo
+    public function pbx(): BelongsTo
     {
-        $model = Config::get('binotel-api.pbx_class');
-        if (! is_null($model)) {
-            return null;
-        }
-
-        return $this->belongsTo($model);
+        return $this->belongsTo(Config::get('binotel-api.pbx_class'));
     }
 
     public function history(): HasMany

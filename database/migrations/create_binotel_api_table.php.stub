@@ -22,6 +22,7 @@ class CreateBinotelApiTable extends Migration
             $table->unsignedInteger('waitsec')->nullable();
             $table->unsignedInteger('billsec')->nullable();
             $table->string('disposition')->nullable()->index();
+            $table->string('recording_status')->nullable();
             $table->boolean('is_new_call')->default(0);
             $table->nullableTimestamps();
         });

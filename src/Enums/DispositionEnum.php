@@ -9,6 +9,7 @@ use Spatie\Enum\Laravel\Enum;
  * @method static self ANSWER()
  * @method static self TRANSFER()
  * @method static self ONLINE()
+ * @method static self CALLING()
  * @method static self BUSY()
  * @method static self NOANSWER()
  * @method static self CANCEL()
