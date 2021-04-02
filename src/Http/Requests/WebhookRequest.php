@@ -17,7 +17,7 @@ class WebhookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'requestType' => ['required', 'in:apiCallSettings,apiCallCompleted'],
+            'requestType' => ['required', 'string'],
         ];
     }
 

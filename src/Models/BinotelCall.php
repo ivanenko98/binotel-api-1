@@ -40,6 +40,6 @@ class BinotelCall extends Model
 
     public function history(): HasMany
     {
-        return $this->hasMany(BinotelCallHistory::class);
+        return $this->hasMany(BinotelCallHistory::class, 'binotel_call_id');
     }
 }
