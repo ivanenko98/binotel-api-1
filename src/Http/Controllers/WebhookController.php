@@ -18,7 +18,7 @@ class WebhookController
     {
         $key = 'binotel-api.actions.' . $request->input('requestType');
 
-        if (!Config::has($key)) {
+        if (! Config::has($key)) {
             abort(404);
         }
 

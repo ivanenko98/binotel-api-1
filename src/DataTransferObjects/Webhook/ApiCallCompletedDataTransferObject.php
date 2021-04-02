@@ -14,7 +14,7 @@ final class ApiCallCompletedDataTransferObject extends DataTransferObject
     {
         return new self([
             'requestType' => $request->input('requestType'),
-            'callDetails' => $request->input('callDetails')
+            'callDetails' => $request->input('callDetails'),
         ]);
     }
 }
