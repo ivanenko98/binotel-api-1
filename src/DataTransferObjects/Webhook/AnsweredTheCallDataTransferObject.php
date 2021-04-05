@@ -24,7 +24,7 @@ class AnsweredTheCallDataTransferObject extends DataTransferObject
             'externalNumber' => $request->input('externalNumber'),
             'companyID' => (int) $request->input('companyID'),
             'generalCallID' => (int) $request->input('generalCallID'),
-            'callType' => (int) $request->input('callType')
+            'callType' => (int) $request->input('callType'),
         ]);
     }
 }

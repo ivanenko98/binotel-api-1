@@ -32,7 +32,7 @@ class ReceivedTheCallDataTransferObject extends DataTransferObject
             'method' => $request->input('method'),
             'didNumber' => $request->input('didNumber'),
             'did' => $request->input('did'),
-            'srcNumber' => $request->input('srcNumber')
+            'srcNumber' => $request->input('srcNumber'),
         ]);
     }
 }

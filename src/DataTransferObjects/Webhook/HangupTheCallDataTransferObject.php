@@ -20,7 +20,7 @@ class HangupTheCallDataTransferObject extends DataTransferObject
             'billsec' => (int) $request->input('billsec'),
             'disposition' => $request->input('disposition'),
             'requestType' => $request->input('requestType'),
-            'method' => $request->input('method')
+            'method' => $request->input('method'),
         ]);
     }
 }
