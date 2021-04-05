@@ -15,9 +15,9 @@ class ReceivedTheCallDataTransferObject extends DataTransferObject
     public int $companyID;
     public string $requestType;
     public string $method;
-    public string $didNumber;
-    public string $did;
-    public string $srcNumber;
+    public ?string $didNumber = null;
+    public ?string $did = null;
+    public ?string $srcNumber = null;
 
     public static function fromRequest(Request $request): self
     {
