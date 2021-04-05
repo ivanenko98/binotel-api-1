@@ -18,7 +18,7 @@ class TransferredTheCallDataTransferObject extends DataTransferObject
             'internalNumber' => (int) $request->input('internalNumber'),
             'generalCallID' => (int) $request->input('generalCallID'),
             'companyID' => (int) $request->input('companyID'),
-            'requestType' => $request->input('requestType')
+            'requestType' => $request->input('requestType'),
         ]);
     }
 }

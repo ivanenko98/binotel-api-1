@@ -3,7 +3,6 @@
 
 namespace Sashalenz\Binotel\Actions;
 
-
 use Illuminate\Http\JsonResponse;
 use Sashalenz\Binotel\DataTransferObjects\Webhook\TransferredTheCallDataTransferObject;
 use Sashalenz\Binotel\Http\Requests\WebhookRequest;
@@ -21,5 +20,4 @@ class TransferredTheCall extends WebhookAction
 
         return $this;
     }
-
 }
