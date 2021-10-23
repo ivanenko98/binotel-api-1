@@ -3,9 +3,8 @@
 namespace Sashalenz\Binotel\DataTransferObjects;
 
 use Illuminate\Support\Collection;
-use Spatie\DataTransferObject\FlexibleDataTransferObject;
 
-abstract class BinotelDataTransferObject extends FlexibleDataTransferObject
+abstract class BinotelDataTransferObject extends \Spatie\DataTransferObject\DataTransferObject
 {
     abstract public static function fromArray(array $array);
 
